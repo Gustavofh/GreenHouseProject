@@ -4,9 +4,9 @@
 #include <DHT.h>     // Temperature & humidity
 
 // RELE VARS
-const int lampRele = 11;
 const int bombaRele = 10;
-const int coolerRele = 13;
+const int lampRele = 11;
+const int coolerRele = 12;
 
 
 // LCD VARS
@@ -210,87 +210,87 @@ void loop() {
 
 
   ////////    PRINTS    ////////
-
-  if (now.second() % 5 == 0) {
-    Serial.print("Data: ");
-    sprintf(dateBuffer, "%02u-%02u-%04u", now.day(), now.month(), now.year());
-    Serial.println(dateBuffer);
-    Serial.print("Day: ");
-    Serial.println(daysOfTheWeek[now.dayOfTheWeek()]);
-    Serial.print("Clock: ");
-    sprintf(dateBuffer, "%02u:%02u:%02u", now.hour(), now.minute(), now.second());
-    Serial.println(dateBuffer);
-    Serial.print("Temp Outside: ");
-    Serial.println(rtc.getTemperature());
-    Serial.print("Temp Inside: ");
-    Serial.println(temp);
-    Serial.print("Hum Inside: ");
-    Serial.println(hum);
-    Serial.print("Soil Moisture: ");
-    Serial.print(soilMoisturePercent);
-    Serial.println("%");
-    Serial.print("Water Content: ");
-    Serial.println(distance);
-    Serial.print("Perc Water: "); // AJUSTAR
-    Serial.print(percentDistance); // AJUSTAR
-    Serial.println("%"); // AJUSTAR
-    Serial.print("Pump Status: ");
-    if (pumpStatus == 0) {
-      Serial.println("Pump OFF");
-    } else if (pumpStatus == 1) {
-      Serial.println("Pump ON");
-    } else {
-      Serial.println("Water Level Low - Pump OFF");
-    }
-    Serial.println("");
-    Serial.println("");
-    Serial.println("");
-  }
+//
+//  if (now.second() % 5 == 0) {
+//    Serial.print("Data: ");
+//    sprintf(dateBuffer, "%02u-%02u-%04u", now.day(), now.month(), now.year());
+//    Serial.println(dateBuffer);
+//    Serial.print("Day: ");
+//    Serial.println(daysOfTheWeek[now.dayOfTheWeek()]);
+//    Serial.print("Clock: ");
+//    sprintf(dateBuffer, "%02u:%02u:%02u", now.hour(), now.minute(), now.second());
+//    Serial.println(dateBuffer);
+//    Serial.print("Temp Outside: ");
+//    Serial.println(rtc.getTemperature());
+//    Serial.print("Temp Inside: ");
+//    Serial.println(temp);
+//    Serial.print("Hum Inside: ");
+//    Serial.println(hum);
+//    Serial.print("Soil Moisture: ");
+//    Serial.print(soilMoisturePercent);
+//    Serial.println("%");
+//    Serial.print("Water Content: ");
+//    Serial.println(distance);
+//    Serial.print("Perc Water: "); // AJUSTAR
+//    Serial.print(percentDistance); // AJUSTAR
+//    Serial.println("%"); // AJUSTAR
+//    Serial.print("Pump Status: ");
+//    if (pumpStatus == 0) {
+//      Serial.println("Pump OFF");
+//    } else if (pumpStatus == 1) {
+//      Serial.println("Pump ON");
+//    } else {
+//      Serial.println("Water Level Low - Pump OFF");
+//    }
+//    Serial.println("");
+//    Serial.println("");
+//    Serial.println("");
+//  }
 
 
   //    ////////    LCD PRINTS    ////////
-  //  lcd.setCursor(0,0);
-  //  lcd.print(now.day());
-  //  lcd.print("/");
-  //  lcd.print(now.month());
-  //  lcd.print(" ");
-  //
-  //  if (now.hour() < 10) {
-  //    lcd.print("0");
-  //  }
-  //  lcd.print(now.hour());
-  //  lcd.print(":");
-  //  if (now.minute() < 10) {
-  //    lcd.print("0");
-  //  }
-  //  lcd.print(now.minute());
-  //  lcd.print(":");
-  //  if (now.second() < 10) {
-  //    lcd.print("0");
-  //  }
-  //  lcd.print(now.second());
-  //
-  //  lcd.setCursor(0,1);
-  //
-  //  if (now.second() % 5 == 0) {
-  //  //// TEMPERATURE OUTSIDE ////
-  //  lcd.print("TOut:");
-  //  lcd.print("24");
-  //  lcd.print(" ");
-  //  } else {
-  //    //// TEMPERATURE INSIDE ////
-  //  lcd.print("TIns:");
-  //  lcd.print("24");
-  //  }
-  //    //// TEMPERATURE INSIDE ////
-  //  lcd.setCursor(0,2);
-  //  lcd.print("Hum:");
-  //  lcd.print("24");
-  //
-  //  lcd.print(" ");
-  //  lcd.print("Most:");
-  //  lcd.print(50);
-  //  lcd.print("%");
+    lcd.setCursor(0,0);
+    lcd.print(now.day());
+    lcd.print("/");
+    lcd.print(now.month());
+    lcd.print(" ");
+  
+    if (now.hour() < 10) {
+      lcd.print("0");
+    }
+    lcd.print(now.hour());
+    lcd.print(":");
+    if (now.minute() < 10) {
+      lcd.print("0");
+    }
+    lcd.print(now.minute());
+    lcd.print(":");
+    if (now.second() < 10) {
+      lcd.print("0");
+    }
+    lcd.print(now.second());
+  
+    lcd.setCursor(0,1);
+  
+    if (now.second() % 5 == 0) {
+    //// TEMPERATURE OUTSIDE ////
+    lcd.print("TOut:");
+    lcd.print("24");
+    lcd.print(" ");
+    } else {
+      //// TEMPERATURE INSIDE ////
+    lcd.print("TIns:");
+    lcd.print("24");
+    }
+      //// TEMPERATURE INSIDE ////
+    lcd.setCursor(0,2);
+    lcd.print("Hum:");
+    lcd.print("24");
+  
+    lcd.print(" ");
+    lcd.print("Most:");
+    lcd.print(50);
+    lcd.print("%");
 
 
   ////////    FINAL DELAY    ////////
